@@ -3,13 +3,15 @@
 
 import pygsheets
 import telebot
+import httplib2shim
 from telebot import types as tp
 import config
 import sqlite3
 from sqlite3 import Error
 
+http = httplib2shim.Http()
 token = "tg bot token"
-wks = pygsheets.authorize().open('your google table').sheet1
+wks = pygsheets.authorize(http=http).open('your google table').sheet1
 
 
 def create_connection(path):
